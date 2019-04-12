@@ -30,6 +30,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.owner.Bill;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 /**
  * Simple JavaBean domain object representing a visit.
  *
@@ -125,7 +127,7 @@ public class Visit extends BaseEntity {
     }
     
     // Hibernate
-    
+    @JsonBackReference
     @OneToOne(fetch = FetchType.LAZY)
     private Bill bill;
 

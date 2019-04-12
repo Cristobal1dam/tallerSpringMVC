@@ -19,6 +19,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.samples.petclinic.model.BaseEntity;
 import org.springframework.samples.petclinic.visit.Visit;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="facturas")
 public class Bill extends BaseEntity {
@@ -33,6 +36,7 @@ public class Bill extends BaseEntity {
 	@Digits(integer=5, fraction=2)
 	@DecimalMin("0.0")
 	private double money;
+	
 	
 	@OneToOne(fetch = FetchType.LAZY, mappedBy = "bill", cascade = CascadeType.ALL)
 	private Visit visit;
